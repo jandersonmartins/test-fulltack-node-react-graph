@@ -13,6 +13,8 @@ export default gql`
 
   extend type Mutation {
     createPet(name: String!): Pet
+    updatePet(id: ID!, name: String!): Pet
+    deletePet(id: ID): Boolean
   }
 
   extend type Query {

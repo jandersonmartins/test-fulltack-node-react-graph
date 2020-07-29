@@ -8,7 +8,8 @@ const database = {
   start: () => new Promise((resolve, reject) => {
     mongoose.connect(MONGO_URL, {
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
+      useFindAndModify: true
     })
 
     mongoose.connection.on('error', err => reject(err))
