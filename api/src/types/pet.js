@@ -2,6 +2,7 @@ import { gql } from 'apollo-server-express'
 
 export default gql`
   type Pet {
+    id: ID!
     name: String!
     owner: User
   }
@@ -16,5 +17,9 @@ export default gql`
 
   extend type Query {
     listPets: PetList
+  }
+
+  extend type Query {
+    findPetById(id: ID!): Pet
   }
 `
