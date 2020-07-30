@@ -25,7 +25,11 @@ const Navbar = ({ onLogout }) => {
       <Collapse isOpen={isOpen} navbar>
         <Nav className="mr-auto" navbar>
           <NavItem>
-            <NavLink to="/pets">Todos</NavLink>
+            <NavLink className="nav-link" to="/pets">Todos</NavLink>
+          </NavItem>
+
+          <NavItem>
+            <NavLink className="nav-link" to="/pets/new">Novo</NavLink>
           </NavItem>
         </Nav>
 

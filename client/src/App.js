@@ -6,7 +6,7 @@ import client from './graphql/client'
 const Bootstrap = lazy(() => import('./bootstrap'))
 
 const App = () => (
-  <Suspense fallback={<h1>Loading...</h1>}>
+  <Suspense fallback={null}>
     <ApolloProvider client={client}>
       <BrowserRouter>
         <Bootstrap />

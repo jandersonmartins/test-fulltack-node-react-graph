@@ -4,6 +4,7 @@ const LIST_PETS = gql`
   {
     listPets {
       pets {
+        id
         name
       }
     }

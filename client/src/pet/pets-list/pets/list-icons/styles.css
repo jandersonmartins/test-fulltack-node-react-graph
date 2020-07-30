@@ -1,0 +1,7 @@
+.list-icons {
+  margin-left: auto;
+}
+
+.list-icons a:first-child {
+  margin-right: 10px;
+}
