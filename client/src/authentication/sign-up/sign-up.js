@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {
   Card,
   CardBody,
@@ -10,7 +11,7 @@ import {
 } from 'reactstrap'
 import SignUpForm from './sign-up-form'
 
-const SignUp = () => (
+const SignUp = ({ onSubmit, loading, error }) => (
   <Container>
     <Row className="justify-content-center">
       <Col md="8">
@@ -21,7 +22,11 @@ const SignUp = () => (
             </CardTitle>
 
             <CardBody>
-              <SignUpForm />
+              <SignUpForm
+                onSubmit={onSubmit}
+                loading={loading}
+                error={error}
+              />
             </CardBody>
           </Card>
         </CardGroup>
@@ -29,5 +34,11 @@ const SignUp = () => (
     </Row>
   </Container>
 )
+
+SignUp.propTypes = {
+  onSubmit: PropTypes.func,
+  loading: PropTypes.bool,
+  error: PropTypes.string
+}
 
 export default SignUp
