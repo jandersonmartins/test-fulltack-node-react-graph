@@ -1,5 +1,8 @@
 import { createServer } from 'http'
 import express from 'express'
+import cors from 'cors'
+import helmet from 'helmet'
+import compression from 'compression'
 import { ApolloServer } from 'apollo-server-express'
 
 import { SERVER_PORT } from './config/server'
@@ -11,6 +14,10 @@ import serverContext from './server-context'
 const debug = debugFn()
 
 const expressApp = express()
+expressApp.use(cors())
+expressApp.use(helmet())
+expressApp.use(compression())
+
 const appServer = createServer(expressApp)
 
 const apolloServer = new ApolloServer({

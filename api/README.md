@@ -13,3 +13,17 @@ Clean:
 ```sh
 docker-compose -f docker-compose.dev.yml down
 ```
+
+## Tests
+
+Build services:
+
+```sh
+docker-compose -f docker-compose.dev.yml build
+```
+
+Run all tests
+
+```sh
+docker-compose -f docker-compose.dev.yml run api yarn test
+```
