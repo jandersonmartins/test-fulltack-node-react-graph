@@ -14,29 +14,23 @@ import {
 import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
 
-const SignupSchema = Yup.object().shape({
+const SignInSchema = Yup.object().shape({
   email: Yup.string()
     .email('email inválido')
     .required('preencha o e-mail'),
 
   password: Yup.string()
-    .required('Senha obrigatória'),
-
-  confirmation: Yup
-    .string()
-    .oneOf([Yup.ref('password'), null], 'a senhas devem corresponder')
-    .required('confirme a senha')
+    .required('preencha a senha')
 })
 
 const SignUpForm = ({ onSubmit, loading, error }) => (
   <Formik
     initialValues={{
       email: '',
-      password: '',
-      confirmation: ''
+      password: ''
     }}
-    validationSchema={SignupSchema}
-    onSubmit={({ email, password }, actions) => onSubmit({ email, password }, actions)}
+    validationSchema={SignInSchema}
+    onSubmit={({ email, password }) => onSubmit({ email, password })}
   >
     {({ handleSubmit }) => (
       <Form onSubmit={handleSubmit}>
@@ -77,25 +71,6 @@ const SignUpForm = ({ onSubmit, loading, error }) => (
           )}
         </Field>
 
-        <Field name="confirmation">
-          {({ field, meta }) => (
-            <FormGroup>
-              <Label for="confirmation">Confirmar Senha</Label>
-              <Input
-                {...field}
-                type="password"
-                id="confirmation"
-                placeholder="Confirmar senha"
-                autoComplete="password"
-              />
-
-              {meta.touched && meta.error && (
-                <FormText className="help-block">{meta.error}</FormText>
-              )}
-            </FormGroup>
-          )}
-        </Field>
-
         {error && (
           <FormGroup>
             <Alert color="danger">{error}</Alert>
@@ -109,12 +84,12 @@ const SignUpForm = ({ onSubmit, loading, error }) => (
               disabled={loading}
               color="primary"
             >
-              Cadastrar
+              Entrar
             </Button>
           </Col>
 
           <Col xs="6" className="text-right">
-            <Link to="/sign-in">Logar</Link>
+            <Link to="/sign-up">Cadastre-se</Link>
           </Col>
         </Row>
       </Form>
